@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css?family=Orbitron|Shrikhand|Six+Caps');
+$cell-dimensions: 15px;
+$board-width: $cell-dimensions * 50;
+$board-height: $cell-dimensions * 30;
+$dark-highlight: lighten(black, 15%);
+$light-green: #66ff33;
+$cell-border: 1px solid $dark-highlight;
+body {
+  background: black;
+  font-family: Orbitron
+}
+
+#app {
+  display: flex;
+  //height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  color: $light-green;
+  font-family: Shrikhand;
+  font-size: 35px;
+  text-align: center;
+  margin-bottom: 3px;
+}
+
+.boardWrapper {
+  padding: 5px;
+  background: $dark-highlight;
+  border-radius: 5px;
+  .board {
+    height: $board-height;
+    width: $board-width;
+    border-top: $cell-border;
+    border-left: $cell-border;
+    .cell {
+      height: $cell-dimensions;
+      width: $cell-dimensions;
+      box-sizing: border-box;
+      border-right: $cell-border;
+      border-bottom: $cell-border;
+      float: left;
+      font-size: 7px;
+      color: orange;
+    }
+  }
+}
+
+.bottomTab {
+  width: $board-width / 2.5;
+  text-align: center;
+  margin: 15px auto;
+  border-radius: 10px;
+  background: $dark-highlight;
+  padding: 8px 0;
+  position: relative;
+  div {
+    width: $board-width / 2.9;
+    margin: 3px auto;
+    padding-top: 7px;
+    padding-bottom: 4px;
+    background: $light-green;
+    border-radius: 2px;
+    cursor: pointer;
+    &:active {
+      outline: 1px solid #D8E4FF;
+    }
+    &:first-of-type {
+      cursor: default;
+      div {
+        padding: 0;
+        padding-top: 5px;
+      }
+      &:active {
+        outline: none;
+      }
+    }
+  }
+}
+
+// Small Screens: Landscape
+@media screen and (max-width: 700px) {
+  #app {
+    height: 100%;
+    transform: scale(0.7);
+    -webkit-transform: scale(0.7);
+    -moz-transform: scale(0.7);
+    -ms-transform: scale(0.7);
+    -o-transform: scale(0.7);
+  }
+}
+
+// Small Screens: Portrait
+@media screen and (max-width: 500px) {
+  #app {
+    height: 100%;
+    transform: scale(0.6);
+    -webkit-transform: scale(0.6);
+    -moz-transform: scale(0.6);
+    -ms-transform: scale(0.6);
+    -o-transform: scale(0.6);
+  }
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+.patternsWrapper {
+  position: absolute;
+  top: -3px;
+  left: 0;
+  background: $dark-highlight !important;
+  border-radius: 10px !important;
+  padding: 21px;
+}
+
+.patternsWrapper, .back {
+  outline: none !important;
+}
+
+.pattern {
+  &:hover {
+    cursor: pointer !important;
+  }
+  &:active {
+    outline: 1px solid #D8E4FF !important;
+  }
+}
+
+.toggleShowPatterns-enter {
+  opacity: 0.01;
+}
+
+.toggleShowPatterns-enter.toggleShowPatterns-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.toggleShowPatterns-leave {
+  opacity: 1;
+}
+
+.toggleShowPatterns-leave.toggleShowPatterns-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
